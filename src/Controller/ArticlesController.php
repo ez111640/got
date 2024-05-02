@@ -11,4 +11,9 @@ class ArticlesController extends AppController
         $this->loadComponent('Paginator');
         $this->loadComponent('Flash'); // Include the FlashComponent
     }
+
+    public function index()
+    {
+
+    }
 }
