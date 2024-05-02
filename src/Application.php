@@ -38,6 +38,7 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  */
 class Application extends BaseApplication
 {
+
     /**
      * Load all the application configuration and bootstrap logic.
      *
@@ -54,7 +55,9 @@ class Application extends BaseApplication
                 (new TableLocator())->allowFallbackClass(false)
             );
         }
+        $this->addPlugin('DebugKit');
     }
+
 
     /**
      * Setup the middleware queue your application will use.
