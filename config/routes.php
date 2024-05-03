@@ -55,7 +55,7 @@ return function (RouteBuilder $routes): void {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Articles', 'action' => 'index']);
+        $builder->connect('/', ['controller' => 'Homes', 'action' => 'index']);
 
         $builder->scope('/homes', function (RouteBuilder $builder) {
             $builder->connect('/tagged/*', ['controller' => 'Homes', 'action' => 'tags']);
