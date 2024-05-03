@@ -2,6 +2,9 @@
     .home-image-link {
         display: inline-block;
         transition: transform 0.3s;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        margin-right: 10px;
     }
 
     .home-image-link:hover {
@@ -23,17 +26,33 @@
     }
 
     input[type="text"] {
-        color: grey; /* Normal font weight */
+        color: grey;
     }
 
     input[type="text"]:focus {
-        color: black; /* Bold font weight */
+        color: black;
+    }
+
+    ul{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 10px;
+    }
+
+    .button-div{
+        display: flex;
+        column-gap: 10px
+    }
+
+    .main-div{
+    display: flex;
+    width: 120%
     }
 </style>
 
 <h1>Search Homes</h1>
 
-<div style="display: flex; width: 120% ">
+<div class='main-div'>
     <?php
     $home = null;
     echo $this->Form->create($home, ['style' => 'display: flex; column-gap: 5px', 'id' => 'searchForm']);
@@ -59,7 +78,7 @@
     <?php echo $this->Form->control('lot_size', ['label' => false, 'placeholder' => 'Min. Lot Size (acres)']); ?>
 
 
-    <div style='display: flex; column-gap: 10px'>
+    <div class='button-div'>
         <?php echo $this->Form->button(__('Search'), ['class' => 'orange-button']); ?>
 
         <?php echo $this->Form->button(__('Start Over'), ['type' => 'button', 'onclick' => 'clearForm()', 'class' => 'orange-button']) ?>
@@ -71,13 +90,13 @@
 <h2>Search Results:</h2>
 
 <?php if (!empty($homes)): ?>
-    <ul style="display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 10px;">
+    <ul>
         <?php foreach ($homes as $home): ?>
             <td >
                 <?= $this->Html->link(
-                    $this->Html->image($home->photo_url, ['style' => 'border-radius: 10px; margin-bottom: 14px; margin-right: 10px;', 'class' => 'home-image-link']),
+                    $this->Html->image($home->photo_url, [ 'class' => 'home-image-link']),
                     ['action' => 'view', $home->slug],
-                    ['escape' => false] // Ensure HTML is not escaped
+                    ['escape' => false]
                 ) ?>
             </td>
         <?php endforeach; ?>
