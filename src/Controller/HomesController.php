@@ -21,7 +21,6 @@ class HomesController extends AppController
     {
             $home = $this->Homes
                 ->findBySlug($slug)
-                ->contain('Tags')
                 ->firstOrFail();
             $this->set(compact('home'));
 
